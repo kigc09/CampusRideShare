@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace=" ~{fragments :: head}"></head>
+<body id="pageCenter">
+<div th:replace="~{fragments :: header-nav}"></div>
+<main>
+    <!--
+    <aside>
+        <img th:if="${current.hasImage()}" th:src="${current.image.getDataUri()}" alt="Item image."/>
+        <img th:unless="${current.hasImage()}" th:src="@{/Images/NoPhotoLarge.jpg}" alt="No image provided."/>
+        <br>
+    </aside>
+    -->
+    <h2 th:text="${current.name}">RIDE NAME</h2>
+    <p>TIME: <span th:text="${current.departureTime}"></span></p>
+    <p>CAMPUS: $<span  th:text="${current.campus}"></span></p>
+    <p>SEATS: <span  th:text="${current.seatsAvailable}"></span></p>
+    <p>STATUS: <span th:text="${current.status}"></span></p>
+    <form method="GET" th:action="@{'/view/current/'+${current.id}+'/edit'}">
+        <input type="submit" value="Modify Item">
+    </form>
+    <form method="POST" th:action="@{'/view/current/'+${current.id}+'/delete'}">
+        <input type="submit" value="Delete Item">
+    </form>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

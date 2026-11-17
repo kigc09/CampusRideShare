@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace=" ~{fragments :: head}"></head>
+<body id="pageCenter">
+<div th:replace="~{fragments :: header-nav}"></div>
+<main>
+    <h2>Register Ride</h2>
+    <form method="POST" th:object="${ride}" enctype="multipart/form-data">
+        ID:
+        <input
+            type="text"
+            th:value="*{id}"
+            placeholder="Automatically Generated"
+            readonly
+        />
+        <span class="validationError"
+              th:if="${#fields.hasErrors('id')}"
+              th:errors="*{id}">
+        </span>
+        <br>
+
+        <label>Name: </label>
+        <input
+                type="text"
+                th:field="*{name}" />
+        <span class="validationError"
+              th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}">NAME ERROR</span><br>
+
+        <label>Departure Address:</label>
+        <input
+                type="text"
+                th:field="*{departureAddress}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('departureAddress')}"
+              th:errors="*{departureAddress}">DEPARTURE ERROR</span><br>
+
+        <label>Campus:</label>
+        <select th:field="*{campus}">
+            <option value="">Select Campus</option>
+            <option th:each="t: ${Campus}"
+                    th:value="${t.name()}"
+                    th:text="${t}">
+            </option>
+        </select>
+        <span th:if="${#fields.hasErrors('campus')}"
+              th:errors="*{campus}">N/A</span>
+        <br>
+
+        <label>Time: </label>
+        <input type="datetime-local"
+               th:field="*{departureTime}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('departureTime')}"
+              th:errors="*{departureTime}">TIME ERROR</span><br>
+
+        <label>Seats</label>
+        <input type="text"
+               th:field="*{seatsAvailable}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('seatsAvailable')}"
+              th:errors="*{seatsAvailable}">SEATS AVAILABLE ERROR</span><br>
+
+        <label>Status</label>
+        <input type="text"
+               th:field="*{status}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('status')}"
+              th:errors="*{status}">STATUS ERROR</span><br>
+
+        <button type="submit">Add ride</button>
+    </form>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

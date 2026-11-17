@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head}"></head>
+<body id="pageCenter">
+<div th:replace="~{fragments :: header-nav}"></div>
+<img class="imageRight" th:src="@{Images/mccBuilding.jpg}" width="350" height="350" alt="MCC Bookstore Interior." />
+<main class="main-container">
+
+    <h2 class="home-h2">Welcome to the Campus Ride Share App.</h2>
+
+    <p class="home-p">Look for ride to campus look no further, check out our available rides at the moment.</p>
+    <div>
+        <form >
+            <h3>Find a Ride</h3>
+            <label>From: </label>
+            <select>
+                <option>Select Pickup Location</option>
+                <option>Fort Omaha Campus (FOC)</option>
+                <option>South Omaha Campus (SOC)</option>
+                <option>Elkhorn Valley Campus (EVC)</option>
+                <option>Applied Technology Center (ATC)</option>
+                <option>Fremont Area Center (FRC)</option>
+                <option>MCC Sarpy Center (SRP)</option>
+                <option>Enter an Address</option>
+            </select>
+            <input type="text" name="from">
+            <label>To: </label>
+            <select>
+                <option></option>
+            </select>
+            <input type="submit" value="Find a Ride">
+
+        </form>
+    </div>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>
